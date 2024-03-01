@@ -7,6 +7,8 @@
 using namespace std;
 typedef long long int ll;
 
+// https://inf-ege.sdamgia.ru/problem?id=35915
+
 
 int main(){
     ifstream fin("/Users/IGrinyuk/Downloads/26-13.txt");
