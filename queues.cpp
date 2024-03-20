@@ -40,8 +40,8 @@ int main(){
     }
     sort(people.begin(), people.end(), Compare);
 
-    ll last_timestamp1 = 0;
-    ll last_timestamp2 = 0;
+    ll last_timestamp = 0;
+//    ll last_timestamp2 = 0;
     ll num_fails = 0;
     ll num_processed = 0;
 
@@ -49,22 +49,18 @@ int main(){
         ll cur_timestamp = people[i].time_in;
         ll duration = people[i].duration;
         ll type = people[i].type;
+        deque1 = update_deque(deque1, cur_timestamp, last_timestamp);
+        deque2 = update_deque(deque2, cur_timestamp, last_timestamp);
+        last_timestamp = cur_timestamp;
         if (type == 1){
-            deque1 = update_deque(deque1, cur_timestamp, last_timestamp1);
-            last_timestamp1 = cur_timestamp;
             if(deque1.size() < 14) deque1.push_back(duration);
             else{num_fails++;}
         }
         else if (type == 2){
-            deque2 = update_deque(deque2, cur_timestamp, last_timestamp2);
-            last_timestamp2 = cur_timestamp;
             if(deque2.size() < 14) {deque2.push_back(duration); num_processed++;}
             else{num_fails++;}
         }
         else{
-            deque1 = update_deque(deque1, cur_timestamp, last_timestamp1);
-            deque2 = update_deque(deque2, cur_timestamp, last_timestamp2);
-            last_timestamp1 = cur_timestamp; last_timestamp2 = cur_timestamp;
             if (deque1.size() < deque2.size() && deque1.size() < 14){
                 deque1.push_back(duration);
             }
