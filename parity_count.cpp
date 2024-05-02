@@ -21,22 +21,38 @@ int main(){
         else{n_1++;}
         vec.push_back(abs(n1 - n2));
     }
-    ll mn1 = 1e9;
-    ll mn2 = 1e9;
+    ll mn1_1 = 1e9;
+    ll mn2_1 = 1e9;
     for (ll i = 0; i < vec.size(); i++){
         if (vec[i] % 2 == 1){
-            if (vec[i] < mn1){
-                mn2 = mn1;
-                mn1 = vec[i];
+            if (vec[i] < mn1_1){
+                mn2_1 = mn1_1;
+                mn1_1 = vec[i];
             }
-            else if(vec[i] < mn2){
-                mn2 = vec[i];
+            else if(vec[i] < mn2_1){
+                mn2_1 = vec[i];
             }
         }
     }
-    n_1 += 2;
-    s += mn1 + mn2;
-    cout << "All: " << s % 2 << " |0: " << n_0 << " |1: " << n_1 << endl;
-    cout << s << endl;
+
+    ll mn1_0 = 1e9;
+    ll mn2_0 = 1e9;
+    for (ll i = 0; i < vec.size(); i++){
+        if (vec[i] % 2 == 1){
+            if (vec[i] < mn1_0){
+                mn2_0 = mn1_0;
+                mn1_0 = vec[i];
+            }
+            else if(vec[i] < mn2_0){
+                mn2_0 = vec[i];
+            }
+        }
+    }
+
+    ll s1 = s + mn1_0 + mn2_0 + mn1_1;
+    ll s2 = s + mn1_1 + mn2_1;
+
+//    cout << "All: " << s % 2 << " |0: " << n_0 << " |1: " << n_1 << endl;
+    cout << min(s1, s2) << endl;
     return 0;
 }
