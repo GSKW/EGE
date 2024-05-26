@@ -1,4 +1,9 @@
 path = '../../Downloads/27-8b.txt'
+
+'''
+№ 2668
+54642
+'''
 with open(path, 'r') as file:
     arr = file.read().splitlines()
     N = int(arr[0])

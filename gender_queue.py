@@ -10,7 +10,6 @@ with open(path, 'r') as file:
     N, T = map(int, arr[0].split())
     arr = [[*map(int, x.split()[:2]), x.split()[-1]] for x in arr[1:]]
 
-G, W, M = [], [], []
 type2arr = {
     'G': [],
     'W': [],
